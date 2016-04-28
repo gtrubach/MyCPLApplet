@@ -99,7 +99,6 @@ extern "C" LONG APIENTRY CPlApplet(
 		CWnd wndCPL;
 		BOOL b = wndCPL.Attach(hwndCPL);
 		CMyPropertySheet propSheet(IDS_SAMPLE_CPL_NAME, &wndCPL);
-		//MessageBox(hwndCPL, _T("Got it"), _T("Header"), MB_OK);
 
 		// This is where you would retrieve information from the property
 		// sheet if propSheet.DoModal() returned IDOK.  We aren't doing
