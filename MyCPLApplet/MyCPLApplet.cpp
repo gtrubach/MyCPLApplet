@@ -84,7 +84,7 @@ extern "C" LONG APIENTRY CPlApplet(
 
 	case CPL_GETCOUNT:          // second message, sent once
 		return 1L;                // (LONG)NUM_APPLETS;
-		break;
+
 	case CPL_INQUIRE:        // third message, sent once per app
 		lpCPlInfo = (LPCPLINFO)lParam2;
 
@@ -93,6 +93,7 @@ extern "C" LONG APIENTRY CPlApplet(
 		lpCPlInfo->idInfo = IDS_SAMPLE_CPL_DESCRIPTION;
 		lpCPlInfo->lData = 0L;
 		break;
+
 	case CPL_DBLCLK:            // application icon double-clicked
 	{
 		CWnd wndCPL;
