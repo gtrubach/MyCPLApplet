@@ -4,6 +4,9 @@
 #include "stdafx.h"
 #include "MyCPLApplet.h"
 
+#include "resource.h"
+#include "MyPropertySheet.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -60,4 +63,51 @@ BOOL CMyCPLAppletApp::InitInstance()
 	CWinApp::InitInstance();
 
 	return TRUE;
+}
+
+extern "C" LONG APIENTRY CPlApplet(
+	HWND hwndCPL,       // handle of Control Panel window
+	UINT uMsg,          // message
+	LONG_PTR lParam1,       // first message parameter
+	LONG_PTR lParam2        // second message parameter
+)
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+	LPCPLINFO lpCPlInfo;
+	LONG retCode = 0;
+
+	switch (uMsg)
+	{
+	case CPL_INIT:              // first message, sent once
+		return TRUE;
+
+	case CPL_GETCOUNT:          // second message, sent once
+		return 1L;                // (LONG)NUM_APPLETS;
+		break;
+	case CPL_INQUIRE:        // third message, sent once per app
+		lpCPlInfo = (LPCPLINFO)lParam2;
+
+		lpCPlInfo->idIcon = IDI_SAMPLE_CPL;
+		lpCPlInfo->idName = IDS_SAMPLE_CPL_NAME;
+		lpCPlInfo->idInfo = IDS_SAMPLE_CPL_DESCRIPTION;
+		lpCPlInfo->lData = 0L;
+		break;
+	case CPL_DBLCLK:            // application icon double-clicked
+	{
+		CWnd wndCPL;
+		BOOL b = wndCPL.Attach(hwndCPL);
+		CMyPropertySheet propSheet(IDS_SAMPLE_CPL_NAME, &wndCPL);
+		//MessageBox(hwndCPL, _T("Got it"), _T("Header"), MB_OK);
+
+		// This is where you would retrieve information from the property
+		// sheet if propSheet.DoModal() returned IDOK.  We aren't doing
+		// anything for simplicity.
+
+		propSheet.DoModal();
+		wndCPL.Detach();
+	}
+	break;
+	}
+	return retCode;
 }
