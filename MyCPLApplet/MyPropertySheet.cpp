@@ -14,6 +14,8 @@ CMyPropertySheet::CMyPropertySheet(UINT nIDCaption, CWnd* pParentWnd, UINT iSele
 	:CPropertySheet(nIDCaption, pParentWnd, iSelectPage)
 {
 	AddPage(&m_ppFirst);
+	AddPage(&m_ppSecond);
+	AddPage(&m_ppThird);
 }
 
 //CMyPropertySheet::CMyPropertySheet(LPCTSTR pszCaption, CWnd* pParentWnd, UINT iSelectPage)
