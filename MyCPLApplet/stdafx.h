@@ -37,4 +37,5 @@
 #endif // _AFX_NO_AFXCMN_SUPPORT
 
 #include <Cpl.h>
-#include <afxdlgs.h>
+#include <string>
+#include <regex>

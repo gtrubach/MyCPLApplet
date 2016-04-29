@@ -1,4 +1,5 @@
 #pragma once
+#include "afxwin.h"
 
 
 // CMyFirstPropPage dialog
@@ -22,8 +23,12 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	virtual BOOL OnApply();
-	afx_msg void OnBnClickedCheck(UINT id);
+	afx_msg void OnEnChangeEditName(UINT id);
+	afx_msg void OnEnChangeEditEmail();
 	afx_msg void OnBnClickedRadioSex(UINT id);
-	afx_msg void OnEnChangeEdit(UINT id);
+	afx_msg void OnBnClickedCheck(UINT id);
 	afx_msg void OnDtnDatetimechangeDatetimepickerBirthday(NMHDR *pNMHDR, LRESULT *pResult);
+protected:
+	CEdit m_editEmail;
+	CString m_strEmail;
 };
