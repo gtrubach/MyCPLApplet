@@ -22,4 +22,8 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	virtual BOOL OnApply();
+	afx_msg void OnEnChangeEditServerName();
+	afx_msg void OnIpnFieldchangedIpAddressServer(NMHDR *pNMHDR, LRESULT *pResult);
+	afx_msg void OnBnClickedCheckSsl();
+	afx_msg void OnBnClickedCheckShow();
 };
