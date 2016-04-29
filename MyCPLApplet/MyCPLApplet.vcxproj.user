@@ -11,12 +11,12 @@
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LocalDebuggerCommand>C:\Windows\System32\Rundll32.exe</LocalDebuggerCommand>
+    <LocalDebuggerCommand>C:\Windows\SysWOW64\Rundll32.exe</LocalDebuggerCommand>
     <LocalDebuggerCommandArguments>shell32.dll, Control_RunDLL "$(TargetPath)"</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LocalDebuggerCommand>C:\Windows\System32\Rundll32.exe</LocalDebuggerCommand>
+    <LocalDebuggerCommand>C:\Windows\SysWOW64\Rundll32.exe</LocalDebuggerCommand>
     <LocalDebuggerCommandArguments>shell32.dll, Control_RunDLL "$(TargetPath)"</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
