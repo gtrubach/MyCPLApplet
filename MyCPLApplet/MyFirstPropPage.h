@@ -20,4 +20,7 @@ protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 
 	DECLARE_MESSAGE_MAP()
+public:
+	virtual BOOL OnApply();
+	afx_msg void OnBnClickedRadioSex(UINT id);
 };
