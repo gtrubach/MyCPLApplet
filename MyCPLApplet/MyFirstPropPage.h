@@ -22,5 +22,8 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	virtual BOOL OnApply();
+	afx_msg void OnBnClickedCheck(UINT id);
 	afx_msg void OnBnClickedRadioSex(UINT id);
+	afx_msg void OnEnChangeEdit(UINT id);
+	afx_msg void OnDtnDatetimechangeDatetimepickerBirthday(NMHDR *pNMHDR, LRESULT *pResult);
 };
