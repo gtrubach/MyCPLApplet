@@ -77,7 +77,7 @@ END_MESSAGE_MAP()
 BOOL CMyFirstPropPage::OnApply()
 {
 	// TODO: Add your specialized code here and/or call the base class
-	MessageBox(NULL, _T("Got it"), MB_OK);
+	//MessageBox(NULL, _T("Got it"), MB_OK);
 
 	UpdateData(TRUE);
 
