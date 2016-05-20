@@ -11,6 +11,9 @@ There is an example of creating control panel applets in Windows.
 2. Open solution file `.sln`.
 3. Build the solution.
 
+### Remarks
+This sample writes in registry under `HKEY_LOCAL_MACHINE`. So you need to run this application with administator rights.
+
 ## How to create your own CPL applet
 1. Open [Visual Studio 2015 IDE](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
 2. Start project wizard
