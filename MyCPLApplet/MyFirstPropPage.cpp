@@ -148,7 +148,6 @@ void CMyFirstPropPage::ReadFromReg()
 			RegQueryValueEx(hKey, _T("First Name"), 0, NULL, (LPBYTE)m_strFirstName.GetBuffer(size), &size);
 			m_strFirstName.ReleaseBuffer();
 
-
 			RegQueryValueEx(hKey, _T("Last Name"), 0, NULL, NULL, &size);
 			RegQueryValueEx(hKey, _T("Last Name"), 0, NULL, (LPBYTE)m_strLastName.GetBuffer(size), &size);
 			m_strLastName.ReleaseBuffer();
