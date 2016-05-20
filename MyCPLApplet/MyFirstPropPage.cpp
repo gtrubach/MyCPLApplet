@@ -83,8 +83,6 @@ void CMyFirstPropPage::OnEnChangeEditEmail()
 	// with the ENM_CHANGE flag ORed into the mask.
 
 	// TODO:  Add your control notification handler code here
-	//SetModified(TRUE);
-
 	SetModified(TRUE);
 }
 
@@ -144,34 +142,26 @@ void CMyFirstPropPage::ReadFromReg()
 	{
 		if (disposition == REG_OPENED_EXISTING_KEY)
 		{
-			wchar_t data[1024];
-			DWORD size = sizeof(data) * sizeof(TCHAR);
+			DWORD size = 0;
 
-			if (RegQueryValueEx(hKey, _T("First Name"), 0, NULL, (LPBYTE)data, &size) == ERROR_SUCCESS) {
-				m_strFirstName = data;
-			}
+			RegQueryValueEx(hKey, _T("First Name"), 0, NULL, NULL, &size);
+			RegQueryValueEx(hKey, _T("First Name"), 0, NULL, (LPBYTE)m_strFirstName.GetBuffer(size), &size);
+			m_strFirstName.ReleaseBuffer();
 
-			size = sizeof(data) * sizeof(TCHAR);
-			if (RegQueryValueEx(hKey, _T("Last Name"), 0, NULL, (LPBYTE)data, &size) == ERROR_SUCCESS) {
-				m_strLastName = data;
-			}
 
-			double date;
-			size = sizeof(double);
-			if (RegQueryValueEx(hKey, _T("Birthday"), 0, NULL, (LPBYTE)&date, &size) == ERROR_SUCCESS) {
-				m_odBirth.m_dt = date;
-			}
+			RegQueryValueEx(hKey, _T("Last Name"), 0, NULL, NULL, &size);
+			RegQueryValueEx(hKey, _T("Last Name"), 0, NULL, (LPBYTE)m_strLastName.GetBuffer(size), &size);
+			m_strLastName.ReleaseBuffer();
 
-			DWORD dwData;
-			size = sizeof(DWORD);
-			if (RegQueryValueEx(hKey, _T("Sex"), 0, NULL, (LPBYTE)&dwData, &size) == ERROR_SUCCESS) {
-				m_bSex = dwData;
-			}
+			RegQueryValueEx(hKey, _T("Birthday"), 0, NULL, NULL, &size);
+			RegQueryValueEx(hKey, _T("Birthday"), 0, NULL, (LPBYTE)&m_odBirth.m_dt, &size);
 
-			size = sizeof(data) * sizeof(TCHAR);
-			if (RegQueryValueEx(hKey, _T("Email"), 0, NULL, (LPBYTE)data, &size) == ERROR_SUCCESS) {
-				m_strEmail = data;
-			}
+			RegQueryValueEx(hKey, _T("Sex"), 0, NULL, NULL, &size);
+			RegQueryValueEx(hKey, _T("Sex"), 0, NULL, (LPBYTE)&m_bSex, &size);
+
+			RegQueryValueEx(hKey, _T("Email"), 0, NULL, NULL, &size);
+			RegQueryValueEx(hKey, _T("Email"), 0, NULL, (LPBYTE)m_strEmail.GetBuffer(size), &size);
+			m_strEmail.ReleaseBuffer();
 		}
 
 		RegCloseKey(hKey);
