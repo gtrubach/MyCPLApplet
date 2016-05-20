@@ -19,7 +19,7 @@ CMyFirstPropPage::CMyFirstPropPage()
 	, m_odBirth(COleDateTime::GetCurrentTime())
 	, m_bSex(FALSE)
 {
-
+	ReadFromReg();
 }
 
 CMyFirstPropPage::~CMyFirstPropPage()
@@ -117,13 +117,7 @@ void CMyFirstPropPage::OnEnChangeEditEmail()
 	// TODO:  Add your control notification handler code here
 	//SetModified(TRUE);
 
-	CString strEmail;
-	m_editEmail.GetWindowTextW(strEmail);
-
-	/*if (m_strEmail != strEmail)
-	{*/
-		SetModified(TRUE);
-	//}
+	SetModified(TRUE);
 }
 
 
@@ -165,7 +159,53 @@ BOOL CMyFirstPropPage::SaveToReg()
 		{
 			return FALSE;
 		}
+
+		RegCloseKey(hKey);
 		return TRUE;
 	}
 	return FALSE;
+}
+
+void CMyFirstPropPage::ReadFromReg()
+{
+	SECURITY_ATTRIBUTES sa;
+	ZeroMemory(&sa, sizeof(sa));
+	DWORD disposition;
+	HKEY hKey;
+	if (RegCreateKeyEx(HKEY_LOCAL_MACHINE, _T("Software\\MyCPLApplet\\MyCPLApplet"), 0, NULL, REG_OPTION_NON_VOLATILE, KEY_QUERY_VALUE, &sa, &hKey, &disposition) == ERROR_SUCCESS)
+	{
+		if (disposition == REG_OPENED_EXISTING_KEY)
+		{
+			wchar_t data[1024];
+			DWORD size = sizeof(data) * sizeof(TCHAR);
+
+			if (RegQueryValueEx(hKey, _T("First Name"), 0, NULL, (LPBYTE)data, &size) == ERROR_SUCCESS) {
+				m_strFirstName = data;
+			}
+
+			size = sizeof(data) * sizeof(TCHAR);
+			if (RegQueryValueEx(hKey, _T("Last Name"), 0, NULL, (LPBYTE)data, &size) == ERROR_SUCCESS) {
+				m_strLastName = data;
+			}
+
+			double date;
+			size = sizeof(double);
+			if (RegQueryValueEx(hKey, _T("Birthday"), 0, NULL, (LPBYTE)&date, &size) == ERROR_SUCCESS) {
+				m_odBirth.m_dt = date;
+			}
+
+			DWORD dwData;
+			size = sizeof(DWORD);
+			if (RegQueryValueEx(hKey, _T("Sex"), 0, NULL, (LPBYTE)&dwData, &size) == ERROR_SUCCESS) {
+				m_bSex = dwData;
+			}
+
+			size = sizeof(data) * sizeof(TCHAR);
+			if (RegQueryValueEx(hKey, _T("Email"), 0, NULL, (LPBYTE)data, &size) == ERROR_SUCCESS) {
+				m_strEmail = data;
+			}
+		}
+
+		RegCloseKey(hKey);
+	}
 }

@@ -62,4 +62,5 @@ protected:
 	BOOL m_bSex;
 
 	BOOL SaveToReg();
+	void ReadFromReg();
 };
