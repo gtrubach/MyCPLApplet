@@ -25,6 +25,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	virtual BOOL OnApply();
+	virtual void OnOK();
 	afx_msg void OnEnChangeEditName(UINT id);
 	afx_msg void OnEnChangeEditEmail();
 	afx_msg void OnBnClickedRadioSex(UINT id);
@@ -35,7 +36,7 @@ protected:
 	CEdit m_editFirstName;
 	CEdit m_editLastName;
 	CDateTimeCtrl m_dateBirth;
-	CButton m_checkC;
+	/*CButton m_checkC;
 	CButton m_checkCPP;
 	CButton m_checkR;
 	CButton m_checkCS;
@@ -52,12 +53,13 @@ protected:
 	CButton m_checkGo;
 	CButton m_checkHtml;
 	CButton m_checkCSS;
-	CButton m_checkSQL;
+	CButton m_checkSQL;*/
 
 	CString m_strFirstName;
 	CString m_strLastName;
 	COleDateTime m_odBirth;
 	CString m_strEmail;
-	bool m_bSexM;
-	bool m_bSexF;
+	BOOL m_bSex;
+
+	BOOL SaveToReg();
 };
