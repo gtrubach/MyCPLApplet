@@ -15,7 +15,7 @@ There is an example of creating control panel applets in Windows.
 This sample writes in registry under `HKEY_LOCAL_MACHINE`. So you need to run this application with administator rights.
 
 ## How to create your own CPL applet
-1. Open [Visual Studio 2015 IDE](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
+1. Open [Visual Studio 2015 IDE](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx).
 2. Start project wizard
 
         File->New->Project
@@ -23,6 +23,7 @@ This sample writes in registry under `HKEY_LOCAL_MACHINE`. So you need to run th
 
         Visual C++->MFC->MFC DLL
 4. Press `OK` and `Finish`.
+5. Add extern applet function that initialize and handling your applet. For example see function `CplApplet` [here](https://github.com/gtrubach/MyCPLApplet/blob/master/MyCPLApplet/MyCPLApplet.cpp).
 
 ## How to debug CPL applets in Visual Studio IDE
 1. Open project properties.
