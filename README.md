@@ -24,6 +24,7 @@ This sample writes in registry under `HKEY_LOCAL_MACHINE`. So you need to run th
         Visual C++->MFC->MFC DLL
 4. Press `OK` and `Finish`.
 5. Add extern applet function that initialize and handling your applet. For example see function `CplApplet` [here](https://github.com/gtrubach/MyCPLApplet/blob/master/MyCPLApplet/MyCPLApplet.cpp).
+6. Define your applet function in definition file `.def`.
 
 ## How to debug CPL applets in Visual Studio IDE
 1. Open project properties.
